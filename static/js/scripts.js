@@ -126,6 +126,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Function to scroll to the latest revealed line
+    function scrollToLatestLine() {
+        const codeViewer = document.getElementById('codeViewer');
+        const lines = codeViewer.querySelectorAll('.highlight pre > span');
+        
+        if (lines.length > 0) {
+            const lastLine = lines[lines.length - 1];
+            const containerHeight = codeViewer.clientHeight;
+            const lastLineOffset = lastLine.offsetTop;
+            
+            // Calculate position to show the last line in the middle of the container
+            const scrollPosition = lastLineOffset - (containerHeight / 2) + lastLine.clientHeight;
+            
+            // Only scroll vertically
+            codeViewer.scrollTo({
+                top: scrollPosition,
+                behavior: 'smooth'
+            });
+        }
+    }
+
     // Update the display based on view mode
     async function updateDisplay() {
         const mode = viewMode.value;
@@ -153,6 +174,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const highlightedCode = await highlightCode(codeToShow, languageSelect.value);
         codeViewer.innerHTML = highlightedCode;
+        
+        // Scroll to the latest line after content update
+        if (mode === 'incremental' || mode === 'single') {
+            setTimeout(scrollToLatestLine, 100); // Small delay to ensure content is rendered
+        }
     }
 
     // Display all lines
@@ -166,4 +192,21 @@ document.addEventListener('DOMContentLoaded', () => {
         displayedLines = new Set([...Array(codeLines.length).keys()]);
         currentLineIndex = codeLines.length - 1;
     }
+
+    // Add keyboard navigation
+    document.addEventListener('keydown', async (event) => {
+        // Only handle keyboard navigation if code is loaded
+        if (codeLines.length === 0) return;
+
+        switch (event.key) {
+            case 'ArrowRight':
+                // Simulate next button click
+                nextButton.click();
+                break;
+            case 'ArrowLeft':
+                // Simulate previous button click
+                prevButton.click();
+                break;
+        }
+    });
 });

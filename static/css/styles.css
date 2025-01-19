@@ -19,7 +19,7 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -118,14 +118,44 @@ button:hover {
 }
 
 /* Code viewer styles */
+.viewer-section {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
 #codeViewer {
     text-align: left;
     background: #272822;
-    padding: 1rem;
+    padding: 2rem;
     border-radius: 8px;
     border: 2px solid var(--tertiary);
-    min-height: 100px;
+    height: 500px;
+    overflow-y: auto;
     overflow-x: auto;
+    position: relative;
+}
+
+/* Custom scrollbar for code viewer */
+#codeViewer::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+#codeViewer::-webkit-scrollbar-track {
+    background: #1e1e1e;
+    border-radius: 8px;
+}
+
+#codeViewer::-webkit-scrollbar-thumb {
+    background: var(--tertiary);
+    border-radius: 8px;
+    border: 3px solid #1e1e1e;
+}
+
+#codeViewer::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary);
 }
 
 /* Override some Pygments styles */
@@ -133,13 +163,38 @@ button:hover {
     background: #272822 !important;
     border-radius: 8px;
     font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: 15px;
+    line-height: 1.6;
+    white-space: pre !important;
+    overflow-x: auto;
 }
 
 .highlight pre {
     margin: 0;
     padding: 0;
     background: transparent !important;
+    white-space: pre !important;
 }
 
+.highlight pre > span {
+    white-space: pre !important;
+}
+
+.highlight span {
+    display: inline !important;
+    white-space: pre !important;
+}
+
+.keyboard-hint {
+    color: var(--tertiary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+/* Style for keyboard key representation */
+.keyboard-hint::before,
+.keyboard-hint::after {
+    content: '⌨️';
+    margin: 0 0.5rem;
+}

@@ -49,13 +49,14 @@
 
             <div class="viewer-section" style="display: none;">
                 <div class="controls">
-                    <button id="prevLine">Previous</button>
-                    <button id="nextLine">Next</button>
+                    <button id="prevLine" title="Previous (←)">Previous</button>
+                    <button id="nextLine" title="Next (→)">Next</button>
                     <button id="showAll">Show All</button>
                     <button id="collapseAll">Collapse All</button>
                 </div>
                 
                 <div id="lineCounter">Line: <span id="currentLine">0</span> / <span id="totalLines">0</span></div>
+                <div class="keyboard-hint">Use ← → arrow keys to navigate</div>
                 
                 <div id="codeViewer" class="highlight"></div>
             </div>
