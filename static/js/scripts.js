@@ -166,6 +166,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
                 
             case 'incremental':
+                // Ensure the first line is included if not already displayed
+                if (!displayedLines.has(0)) {
+                    displayedLines.add(0);
+                }
                 // Get all lines up to current index that should be shown
                 const linesToShow = [...displayedLines].sort((a, b) => a - b);
                 codeToShow = linesToShow.map(i => codeLines[i]).join('\n');
