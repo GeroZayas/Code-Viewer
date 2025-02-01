@@ -1,67 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Gero's Code Viewer</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{{ url_for('static', path='/css/styles.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', path='/css/pygments.css') }}">
-    </head>
-    <body>
-        <h1>Gero's Code Viewer</h1>
-        <p>This is a simple code viewer that allows you to view and process code.</p>
-        
-        <div class="container">            
-            <div class="input-section">
-                <div class="settings-grid">
-                    <div class="setting-item">
-                        <label for="languageSelect">Language:</label>
-                        <select id="languageSelect">
-                            <option value="python">Python</option>
-                            <option value="javascript">JavaScript</option>
-                            <option value="html">HTML</option>
-                            <option value="css">CSS</option>
-                            <option value="java">Java</option>
-                            <option value="cpp">C++</option>
-                        </select>
-                    </div>
-                    
-                    <div class="setting-item">
-                        <label for="viewMode">View Mode:</label>
-                        <select id="viewMode">
-                            <option value="single">Single Line</option>
-                            <option value="multi">Multiple Lines</option>
-                            <option value="incremental">Incremental</option>
-                        </select>
-                    </div>
-                    
-                    <div class="setting-item" id="linesCountContainer">
-                        <label for="linesCount">Lines to show:</label>
-                        <input type="number" id="linesCount" value="1" min="1" max="50">
-                    </div>
-                </div>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Gero's Code Viewer</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <link rel="stylesheet" href="{{ url_for('static', path='/css/styles.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', path='/css/pygments.css') }}"> -->
+    <link rel="stylesheet" href="../static/css/styles.css" />
+    <link rel="stylesheet" href="../static/css/pygments.css" />
+  </head>
+  <body class="wrapper">
+    <header class="header">
+      <h1>Gero's Code Viewer</h1>
+      <p>
+        This is a simple code viewer that allows you to view and process code.
+      </p>
+    </header>
 
-                <textarea id="codeInput" placeholder="Paste your code here..."></textarea>
-                <button id="processCode">Process Code</button>
+    <aside class="sidebar">
+        <div class="input-section dbRed">
+          <div class="settings-grid">
+            <div class="setting-item dbGreen">
+              <label for="languageSelect">Language:</label>
+              <select id="languageSelect">
+                <option value="python">Python</option>
+                <option value="javascript">JavaScript</option>
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="java">Java</option>
+                <option value="cpp">C++</option>
+              </select>
             </div>
 
-            <div class="viewer-section" style="display: none;">
-                <div class="controls">
-                    <button id="prevLine" title="Previous (←)">Previous</button>
-                    <button id="nextLine" title="Next (→)">Next</button>
-                    <button id="showAll">Show All</button>
-                    <button id="collapseAll">Collapse All</button>
-                </div>
-                
-                <div id="lineCounter">Line: <span id="currentLine">0</span> / <span id="totalLines">0</span></div>
-                <div class="keyboard-hint">Use ← → arrow keys to navigate</div>
-                
-                <div id="codeViewer" class="highlight"></div>
+            <div class="setting-item dbGreen">
+              <label for="viewMode">View Mode:</label>
+              <select id="viewMode">
+                <option value="single">Single Line</option>
+                <option value="multi">Multiple Lines</option>
+                <option value="incremental">Incremental</option>
+              </select>
             </div>
+
+            <div class="setting-item dbBlue" id="linesCountContainer">
+              <label for="linesCount">Lines to show:</label>
+              <input type="number" id="linesCount" value="1" min="1" max="20" />
+            </div>
+          </div>
+
+          <textarea
+            id="codeInput"
+            placeholder="Paste your code here..."
+          ></textarea>
+          <button id="processCode">Process Code</button>
+        </div>
+    </aside>
+
+    <div class="content">
+      <div class="viewer-section" style="display: none">
+        <div class="controls">
+          <button id="prevLine" title="Previous (←)">Previous</button>
+          <button id="nextLine" title="Next (→)">Next</button>
+          <button id="showAll">Show All</button>
+          <button id="collapseAll">Collapse All</button>
         </div>
 
-        <script src="{{ url_for('static', path='/js/scripts.js') }}" defer></script>
-    </body>
+        <div id="lineCounter">
+          Line: <span id="currentLine">0</span> /
+          <span id="totalLines">0</span>
+        </div>
+        <div class="keyboard-hint">Use ← → arrow keys to navigate</div>
+        <div id="codeViewer" class="highlight"></div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>
+        &copy; 2025 Gero's Code Viewer. All rights reserved.
+    </footer>
+
+    <!-- <script src="{{ url_for('static', path='/js/scripts.js') }}" defer></script> -->
+    <script src="../static/js/scripts.js" defer></script>
+  </body>
 </html>

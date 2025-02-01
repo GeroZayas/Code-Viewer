@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Get DOM elements
+    window.addEventListener('beforeunload', function (e) {
+        e.preventDefault(); // Cancel the event
+      });
+      
     const codeInput = document.getElementById('codeInput');
     const languageSelect = document.getElementById('languageSelect');
     const viewMode = document.getElementById('viewMode');
@@ -214,3 +218,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
