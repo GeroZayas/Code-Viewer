@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalLinesSpan = document.getElementById('totalLines');
     const viewerSection = document.querySelector('.viewer-section');
 
+    linesCountContainer.style.display = 'none';
+
     let codeLines = [];
     let currentLineIndex = 0;
     let displayedLines = new Set(); // For incremental view
