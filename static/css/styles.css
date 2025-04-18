@@ -1,11 +1,11 @@
 /* Basic styles */
 :root {
-  --primary: #d89904; 
-  --secondary: #b41212; 
-  --tertiary: #06b6d4; 
-  --quaternary: #8b5cf6; 
-  --quinary: #10b981; 
-  --senary: #f59e0b; 
+  --primary: #d89904;
+  --secondary: #b41212;
+  --tertiary: #06b6d4;
+  --quaternary: #8b5cf6;
+  --quinary: #10b981;
+  --senary: #f59e0b;
 }
 
 *,
@@ -19,11 +19,13 @@
 .sidebar {
   float: left;
   width: 30%;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
 .content {
   float: right;
   width: 70%;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
 /* make a grid */
@@ -56,7 +58,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
 /* We need to set the widths used on floated items back to auto, and remove the bottom margin as when we have grid we have gaps. */
@@ -70,7 +72,13 @@
 body {
   font-family: Arial, sans-serif;
   padding: 1rem 0.5rem;
-  background-color: #f5f5f5;
+  background: #2a7b9b;
+  background: linear-gradient(
+    90deg,
+    rgba(42, 123, 155, 1) 0%,
+    rgba(87, 199, 133, 1) 50%,
+    rgba(237, 221, 83, 1) 100%
+  );
   color: var(--primary);
   text-align: center;
 }
@@ -154,7 +162,7 @@ input[type="number"] {
 
 textarea#codeInput {
   width: 100%;
-  min-height: 50vh;  /* Reduce minimum height */
+  min-height: 50vh; /* Reduce minimum height */
   padding: 1rem;
   border: 2px solid var(--tertiary);
   border-radius: 8px;
@@ -168,10 +176,16 @@ button {
   background-color: var(--primary);
   color: white;
   border: none;
+  font-weight: 800;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(179, 132, 4, 0.226) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
 button:hover {
